@@ -9,5 +9,10 @@ SampleApp::Application.routes.draw do
   # Users
   resources :users
   get '/signup', to: 'users#new'
+
+  # Authentication
+  resources :sessions, only: [:new, :create, :destroy]
+  get '/signin',  to: 'sessions#new'
+  delete '/signout', to: 'sessions#destroy'
   
-  end
+end
